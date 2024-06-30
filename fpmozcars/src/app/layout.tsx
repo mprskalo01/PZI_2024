@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import NavBar from "./components/NavBar";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang='en'>
+      <html lang='en' className={roboto.className}>
         <body>
           <NavBar />
           {children}
