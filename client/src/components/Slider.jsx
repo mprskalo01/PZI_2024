@@ -1,8 +1,8 @@
-import React from 'react'
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/swiper-bundle.css'
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
+import React from "react";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const Slider = ({ images }) => {
   return (
@@ -13,43 +13,42 @@ const Slider = ({ images }) => {
         clickable: true,
       }}
       breakpoints={{
-        '@0.00': {
+        "@0.00": {
           slidesPerView: 1,
-          spaceBetween: 0,
+          spaceBetween: 2,
         },
-        '@0.75': {
+        "@0.75": {
           slidesPerView: 1,
-          spaceBetween: 0,
+          spaceBetween: 2,
         },
-        '@1.00': {
+        "@1.00": {
           slidesPerView: 1,
-          spaceBetween: 0,
+          spaceBetween: 2,
         },
-        '@1.50': {
+        "@1.50": {
           slidesPerView: 2,
-          spaceBetween: 0,
+          spaceBetween: 2,
         },
-        '@1.75': {
+        "@1.75": {
           slidesPerView: 3,
-          spaceBetween: 0,
+          spaceBetween: 2,
         },
       }}
-      // navigation={true}
       modules={[Pagination]}
-      className="w-full h-auto"
+      className='w-full h-[40vh] rounded-xl'
     >
       {images &&
         images.map((image) => (
-          <SwiperSlide key={image} className="flex justify-center items-start">
+          <SwiperSlide key={image} className='flex justify-center items-start'>
             <img
-              className="w-full h-full object-cover block"
+              className='w-full h-full object-cover block rounded-2xl'
               src={`${image}`}
-              alt="img"
+              alt='img'
             ></img>
           </SwiperSlide>
         ))}
     </Swiper>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;

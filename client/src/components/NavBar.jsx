@@ -1,43 +1,75 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import HamburgerMenu from './HamburgerMenu'
-import { useSelector } from 'react-redux'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import HamburgerMenu from "./HamburgerMenu";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const navigate = useNavigate();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <nav
-      className={
+      className={`bg-zinc-900 h-[8vh] ${
         userInfo?.isAdmin
-          ? 'hidden'
-          : 'navbar flex items-center justify-between px-10 bg-neutral h-20'
-      }
+          ? "hidden"
+          : "navbar flex items-center justify-between px-10 h-20"
+      }`}
     >
-      <Link to="/" className="text-2xl">
-        Rent a Car
-      </Link>
-      <div className="hidden space-x-14 items-center  md:flex">
-        <Link to="/">Home</Link>
-        <Link to="/cars">Cars</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+      <button
+        className='text-2xl font-bold text-zinc-200 bg-transparent border-none'
+        onClick={() => handleNavigation("/")}
+      >
+        FPMOZ
+      </button>
+      <div className='hidden space-x-14 text-zinc-200 items-center font-bold md:flex'>
+        <button
+          className='py-1 px-3 rounded-3xl bg-gray-600 hover:scale-125 hover:bg-gray-400 transition-all duration-500'
+          onClick={() => handleNavigation("/")}
+        >
+          Home
+        </button>
+        <button
+          className='py-1 px-3 rounded-3xl bg-gray-600 hover:scale-125 hover:bg-gray-400 transition-all duration-500'
+          onClick={() => handleNavigation("/cars")}
+        >
+          Cars
+        </button>
+        <button
+          className='py-1 px-3 rounded-3xl bg-gray-600 hover:scale-125 hover:bg-gray-400 transition-all duration-500'
+          onClick={() => handleNavigation("/about")}
+        >
+          About
+        </button>
+        <button
+          className='py-1 px-3 rounded-3xl bg-gray-600 hover:scale-125 hover:bg-gray-400 transition-all duration-500'
+          onClick={() => handleNavigation("/contact")}
+        >
+          Contact
+        </button>
         {userInfo && !userInfo.isAdmin ? (
-          <Link
-            to="/my-account"
-            className="btn btn-sm  btn-outline btn-secondary"
+          <button
+            className='py-1 px-3 rounded-3xl scale-1 bg-indigo-700 hover:scale-125 hover:bg-indigo-400 transition-all duration-500'
+            onClick={() => handleNavigation("/my-account")}
           >
             My Account
-          </Link>
+          </button>
         ) : (
-          <Link to="/sign-in" className="btn btn-sm  btn-outline btn-secondary">
+          <button
+            className='py-1 px-3 rounded-3xl scale-1 bg-indigo-700 hover:scale-125 hover:bg-indigo-400 transition-all duration-500'
+            onClick={() => handleNavigation("/sign-in")}
+          >
             Login
-          </Link>
+          </button>
         )}
       </div>
       <HamburgerMenu />
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

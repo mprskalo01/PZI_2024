@@ -21,51 +21,45 @@ import UsersList from "./pages/UsersList";
 import EditUser from "./pages/EditUser";
 import EditCars from "./pages/EditCars";
 import CreateCars from "./pages/CreateCars";
-// import StripePay from "./components/StripePay";
-import StripeContainer from "./components/StripeContainer";
 
 function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <main className="flex flex-col">
+      <main className='flex flex-col'>
         <Routes>
           <Route element={<RedirectRoutes />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/cars/" element={<Cars />} />
-            <Route path="/cars/:rangeValue" element={<Cars />} />
-            <Route path="/cars/page/:pageNumber" element={<Cars />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/cars/' element={<Cars />} />
+            <Route path='/cars/:rangeValue' element={<Cars />} />
+            <Route path='/cars/page/:pageNumber' element={<Cars />} />
             <Route
-              path="/cars/page/:pageNumber/:rangeValue"
+              path='/cars/page/:pageNumber/:rangeValue'
               element={<Cars />}
             />
-            <Route path="/cars/:rangeValue" element={<Cars />} />
-            <Route path="/car/:id" element={<CarDetails />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/sign-in" element={<Login />} />
-            <Route path="/sign-up" element={<Register />} />
-            <Route path="my-account" element={<MyAccount />}>
-              <Route path="profile" element={<UserProfile />} />
-              <Route path="reservations" element={<UserReservations />} />
+            <Route path='/cars/:rangeValue' element={<Cars />} />
+            <Route path='/car/:id' element={<CarDetails />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/sign-in' element={<Login />} />
+            <Route path='/sign-up' element={<Register />} />
+            <Route path='my-account' element={<MyAccount />}>
+              <Route path='profile' element={<UserProfile />} />
+              <Route path='reservations' element={<UserReservations />} />
             </Route>
-            <Route
-              path="/reservation/payment/:id"
-              element={<StripeContainer />}
-            />
           </Route>
           <Route element={<ProtectedRoute />}>
-            <Route path="admin" element={<AdminHome />}>
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="reservations" element={<Reservations />} />
-              <Route path="users" element={<UsersList />} />
-              <Route path="users/:id" element={<EditUser />} />
-              <Route path="cars" element={<AdminCarLists />} />
-              <Route path="cars/:id" element={<EditCars />} />
-              <Route path="cars/create" element={<CreateCars />} />
+            <Route path='admin' element={<AdminHome />}>
+              <Route path='dashboard' element={<Dashboard />} />
+              <Route path='reservations' element={<Reservations />} />
+              <Route path='users' element={<UsersList />} />
+              <Route path='users/:id' element={<EditUser />} />
+              <Route path='cars' element={<AdminCarLists />} />
+              <Route path='cars/:id' element={<EditCars />} />
+              <Route path='cars/create' element={<CreateCars />} />
             </Route>
           </Route>
-          <Route path="*" element={<NoMatch />} />
+          <Route path='*' element={<NoMatch />} />
         </Routes>
       </main>
     </BrowserRouter>

@@ -1,38 +1,38 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Range = ({ min, max, value, setValue }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const filterHandler = () => {
     if (value.trim()) {
-      navigate(`/cars/${value}`)
+      navigate(`/cars/${value}`);
     } else {
-      navigate('/')
+      navigate("/");
     }
-  }
+  };
   return (
-    <div className="w-1/2 md:w-1/4 h-60 ml-3 flex flex-col justify-center">
+    <div className='w-1/2 md:w-1/4 h-60 ml-3 flex flex-col justify-center'>
       <input
-        type="range"
+        type='range'
         min={min}
         max={max}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="range range-secondary"
-        step="25"
+        className='range range-secondary'
+        step='25'
       />
-      <div className="flex justify-between">
+      <div className='flex justify-between'>
         <p>{min}</p> <p>{value}</p>
       </div>
 
-      <div className="flex justify-end">
-        <button className="btn mt-4" onClick={filterHandler}>
+      <div className='flex justify-end'>
+        <button className='btn mt-4' onClick={filterHandler}>
           Search
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Range
+export default Range;
