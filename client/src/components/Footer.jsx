@@ -4,40 +4,40 @@ import { FaGithub, FaLink } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className='footer footer-center p-10 text-base-content rounded'>
-      <div className='grid grid-flow-col gap-4'>
-        <Link to='/' className='link link-hover'>
-          Home
-        </Link>
-        <Link to='/about' className='link link-hover'>
-          About
-        </Link>
-        <Link to='/contact' className='link link-hover'>
-          Contact
-        </Link>
-        <Link to='/sign-in' className='link link-hover'>
-          Login
-        </Link>
-      </div>
-      <div>
-        <div className='grid grid-flow-col gap-4'>
+    <footer className='bg-zinc-800 text-white py-4 h-[12vh]'>
+      <div className='container mx-auto flex flex-col justify-center items-center gap-5'>
+        {/* Navigation Links */}
+        <div className='flex space-x-4'>
+          <Link to='/' className='hover:text-indigo-400'>
+            Home
+          </Link>
+          <Link to='/about' className='hover:text-indigo-400'>
+            About
+          </Link>
+          <Link to='/contact' className='hover:text-indigo-400'>
+            Contact
+          </Link>
+        </div>
+
+        {/* Social Links */}
+        <div className='flex space-x-4'>
           <a
             href='https://fpmoz.sum.ba'
             target='_blank'
             rel='noreferrer'
-            className='tooltip'
-            data-tip='FPMOZ'
+            className='text-xl hover:text-indigo-400'
+            aria-label='FPMOZ'
           >
-            <FaLink className='link text-2xl' />
+            <FaLink />
           </a>
           <a
             href='https://github.com/mprskalo01'
             target='_blank'
             rel='noreferrer'
-            className='tooltip'
-            data-tip='GitHub'
+            className='text-xl hover:text-indigo-400'
+            aria-label='GitHub'
           >
-            <FaGithub className='text-2xl' />
+            <FaGithub />
           </a>
         </div>
       </div>

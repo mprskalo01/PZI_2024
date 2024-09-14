@@ -14,7 +14,7 @@ const Pagination = ({ value, pages, page, cars }) => {
     );
   };
   return (
-    <div className='btn-group'>
+    <div className=''>
       <button
         className='py-1 px-3 bg-gray-600 hover:bg-gray-400 transition-all duration-500 text-indigo-500 text-2xl rounded-tl-full rounded-bl-full'
         disabled={page <= 1}

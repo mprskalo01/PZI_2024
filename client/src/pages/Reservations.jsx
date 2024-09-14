@@ -53,8 +53,8 @@ const Reservations = () => {
   };
 
   return (
-    <div className="overflow-x-auto mb-20">
-      <table className="table table-compact w-full z-0">
+    <div className='overflow-x-auto mb-20'>
+      <table className='table table-compact w-full z-0'>
         <thead>
           <tr>
             <th></th>
@@ -82,22 +82,22 @@ const Reservations = () => {
                 <td>{formatDate(reservation.toDate)}</td>
                 <td>
                   {reservation.isPaid ? (
-                    <TbCircleCheck className="text-2xl text-success" />
+                    <TbCircleCheck className='text-2xl text-success' />
                   ) : (
-                    <TbCircleX className="text-2xl text-error" />
+                    <TbCircleX className='text-2xl text-error' />
                   )}
                 </td>
                 <td>
                   {reservation.isApproved ? (
-                    <TbCircleCheck className="text-2xl text-success" />
+                    <TbCircleCheck className='text-2xl text-success' />
                   ) : (
-                    <TbCircleX className="text-2xl text-error" />
+                    <TbCircleX className='text-2xl text-error' />
                   )}
                 </td>
                 <td>
                   {!reservation.isApproved && (
                     <button
-                      className="btn btn-outline btn-xs btn-warning"
+                      className='btn btn-outline btn-xs btn-warning'
                       onClick={() => approveHandler(reservation._id)}
                     >
                       Approve
@@ -105,7 +105,7 @@ const Reservations = () => {
                   )}
                   {isDateInFuture(new Date(), reservation.toDate) && (
                     <button
-                      className="btn btn-outline btn-xs btn-error"
+                      className='btn btn-outline btn-xs btn-error'
                       onClick={() => deleteHandler(reservation._id)}
                     >
                       Delete

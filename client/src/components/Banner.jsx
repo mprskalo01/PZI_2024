@@ -8,7 +8,7 @@ const Banner = () => {
     navigate(path);
   };
   return (
-    <div className='flex flex-col h-[91.6vh]'>
+    <div className='flex flex-col h-[92vh]'>
       <div
         className='hero flex-grow bg-cover bg-center relative'
         style={{ backgroundImage: `url(${banner})` }}

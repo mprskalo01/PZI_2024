@@ -1,110 +1,103 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { TbCircleCheck, TbCircleX } from 'react-icons/tb'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { TbCircleCheck, TbCircleX } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   deleteUser,
   deleteUserReset,
-} from '../features/user/adminUserDeleteSlice'
-import { getAllUsers } from '../features/user/userListSlice'
+} from "../features/user/adminUserDeleteSlice";
+import { getAllUsers } from "../features/user/userListSlice";
 
 const UsersList = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  const userList = useSelector((state) => state.userList)
-  const { users } = userList
+  const userList = useSelector((state) => state.userList);
+  const { users } = userList;
 
-  const userDelete = useSelector((state) => state.userDelete)
-  const { success } = userDelete
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success } = userDelete;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userInfo || success) {
-      dispatch(deleteUserReset())
-      dispatch(getAllUsers())
+      dispatch(deleteUserReset());
+      dispatch(getAllUsers());
     }
-  }, [dispatch, success, userInfo])
+  }, [dispatch, success, userInfo]);
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you sure you want to delete?')) {
-      //dispatch delete
-      dispatch(deleteUser(id))
+    if (window.confirm("Are you sure you want to delete?")) {
+      dispatch(deleteUser(id));
     }
-  }
+  };
+
   const editHandler = (id) => {
-    navigate(`/admin/users/${id}`)
-  }
+    navigate(`/admin/users/${id}`);
+  };
+
   return (
-    <>
-      <div className="overflow-x-auto mb-20">
-        <table className="table table-compact w-full z-0">
-          <thead>
+    <div className='p-4'>
+      <div className='overflow-x-auto'>
+        <table className='min-w-full bg-white rounded-lg shadow-md border border-gray-200'>
+          <thead className='bg-zinc-700 text-white'>
             <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Admin</th>
-              <th></th>
-              <th></th>
+              <th className='py-3 px-4 border-b'>#</th>
+              <th className='py-3 px-4 border-b'>Name</th>
+              <th className='py-3 px-4 border-b'>Email</th>
+              <th className='py-3 px-4 border-b'>Phone</th>
+              <th className='py-3 px-4 border-b'>Admin</th>
+              <th className='py-3 px-4 border-b'>Edit</th>
+              <th className='py-3 px-4 border-b'>Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='text-white bg-zinc-800'>
             {users.length > 0 &&
               users.map((user, index) => (
-                <tr key={user._id}>
-                  <th>{index + 1}</th>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phoneNumber}</td>
-                  <td>
+                <tr key={user._id} className='border-b'>
+                  <td className='py-2 px-4'>{index + 1}</td>
+                  <td className='py-2 px-4'>{user.name}</td>
+                  <td className='py-2 px-4'>{user.email}</td>
+                  <td className='py-2 px-4'>{user.phoneNumber}</td>
+                  <td className='py-2 px-4'>
                     {user.isAdmin ? (
-                      <TbCircleCheck className="text-2xl text-success" />
+                      <TbCircleCheck className='text-green-500 text-xl' />
                     ) : (
-                      <TbCircleX className="text-2xl text-error text-center" />
+                      <TbCircleX className='text-red-500 text-xl' />
                     )}
                   </td>
-                  <td>
+                  <td className='py-2 px-4'>
                     <button
-                      className="btn btn-xs btn-outline btn-warning"
+                      className='px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition'
                       onClick={() => editHandler(user._id)}
                     >
                       Edit
                     </button>
                   </td>
-                  {userInfo._id !== user._id && (
-                    <td>
+                  <td>
+                    {userInfo._id !== user._id ? (
                       <button
-                        className="btn btn-xs btn-outline btn-error"
+                        className='px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition'
                         onClick={() => deleteHandler(user._id)}
                       >
                         Delete
                       </button>
-                    </td>
-                  )}
+                    ) : (
+                      <button className='px-3 py-1 cursor-default disabled bg-zinc-500 text-zinc-400 rounded-lg transition text-center'>
+                        Delete
+                      </button>
+                    )}
+                  </td>
                 </tr>
               ))}
           </tbody>
-          <tfoot>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Admin</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </tfoot>
         </table>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default UsersList
+export default UsersList;

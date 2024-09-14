@@ -19,7 +19,7 @@ const CarLists = () => {
     return <Spinner />;
   }
   return (
-    <div className='flex flex-wrap gap-5 justify-center my-20 px-5 scale-90'>
+    <div className='flex flex-wrap gap-5 justify-center px-5 md:scale-[0.65]'>
       {error ? (
         <Alert variant='alert-error' message={error} />
       ) : (
