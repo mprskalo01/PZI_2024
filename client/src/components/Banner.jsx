@@ -20,7 +20,7 @@ const Banner = () => {
               Welcome
             </h1>
             <p className='mb-5 text-lg text-gray-300 font-bold'>
-              FPMOZ Car Rental | Strive for perfection.
+              FPMOZ Car Rental | Strive for perfection
             </p>
 
             <button
