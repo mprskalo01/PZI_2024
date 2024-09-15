@@ -1,59 +1,59 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import API from '../../api/api'
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import API from "../../api/api";
 
 const initialState = {
   loading: false,
-  error: '',
-}
+  error: "",
+};
 
 export const createCar = createAsyncThunk(
-  'carCreate/createCar',
+  "carCreate/createCar",
   async (carData, { rejectWithValue, getState }) => {
     try {
       const {
         userLogin: { userInfo },
-      } = getState()
+      } = getState();
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${userInfo.token}`,
         },
-      }
-      const { data } = await API.post(`api/cars/admin/create`, carData, config)
+      };
+      const { data } = await API.post(`api/cars/admin/create`, carData, config);
 
-      return data
+      return data;
     } catch (error) {
       if (!error.response) {
-        throw error
+        throw error;
       }
-      return rejectWithValue(error.response.data)
+      return rejectWithValue(error.response.data);
     }
   }
-)
+);
 
 const carCreateSlice = createSlice({
-  name: 'carCreate',
+  name: "carCreate",
   initialState,
   reducers: {
     resetCarCreate() {
-      return {}
+      return {};
     },
   },
   extraReducers(builder) {
     builder
       .addCase(createCar.pending, (state, action) => {
-        state.loading = true
+        state.loading = true;
       })
       .addCase(createCar.fulfilled, (state, action) => {
-        state.loading = false
-        state.success = true
+        state.loading = false;
+        state.success = true;
       })
       .addCase(createCar.rejected, (state, action) => {
-        state.loading = false
-        state.error = action.payload.message
-      })
+        state.loading = false;
+        state.error = action.payload.message;
+      });
   },
-})
+});
 
-export const { resetCarCreate } = carCreateSlice.actions
-export default carCreateSlice.reducer
+export const { resetCarCreate } = carCreateSlice.actions;
+export default carCreateSlice.reducer;

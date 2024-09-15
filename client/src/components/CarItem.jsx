@@ -20,7 +20,7 @@ const CarItem = ({ car }) => {
               <button className='text-2xl text-yellow-500'>{`${car.pricePerDay}€ / day`}</button>
             </div>
             <div>
-              <button className='py-4 px-6 rounded-3xl scale-1 bg-indigo-700 hover:scale-125 hover:bg-indigo-600 transition-all duration-500 font-bold'>
+              <button className='py-4 px-6 text-zinc-200 shadow-xl rounded-3xl scale-1 bg-indigo-700 hover:scale-125 hover:bg-indigo-600 transition-all duration-500 font-extrabold'>
                 Reserve Now
               </button>
             </div>

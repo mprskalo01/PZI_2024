@@ -3,7 +3,7 @@ import { SpinnerInfinity } from "spinners-react";
 
 const Spinner = () => {
   return (
-    <div className='flex flex-col justify-center items-center h-[70.3vh] gap-5'>
+    <div className='flex flex-col justify-center items-center h-[92vh] gap-5'>
       <p className='text-2xl font-bold text-indigo-500'>Loading</p>
       <div role='status'>
         <SpinnerInfinity

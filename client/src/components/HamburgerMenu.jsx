@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const HamburgerMenu = () => {
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
 
   useEffect(() => {
     toggle
@@ -16,12 +21,12 @@ const HamburgerMenu = () => {
     setToggle(!toggle);
   };
   return (
-    <div className='bg-zinc-700'>
-      <label className='btn btn-circle swap swap-rotate md:hidden z-50'>
+    <div>
+      <label className='btn btn-circle bg-zinc-700 swap swap-rotate md:hidden z-50'>
         <input type='checkbox' checked={toggle} onChange={toggleHandler} />
 
         <svg
-          className='swap-off fill-current'
+          className='swap-off fill-indigo-600'
           xmlns='http://www.w3.org/2000/svg'
           width='32'
           height='32'
@@ -31,7 +36,7 @@ const HamburgerMenu = () => {
         </svg>
 
         <svg
-          className='swap-on fill-current'
+          className='swap-on fill-indigo-600'
           xmlns='http://www.w3.org/2000/svg'
           width='32'
           height='32'
@@ -40,8 +45,9 @@ const HamburgerMenu = () => {
           <polygon points='400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49' />
         </svg>
       </label>
+
       <div
-        className={`fixed w-screen h-screen flex flex-col justify-center text-2xl gap-y-4 bg-zinc-800 z-10 items-center  md:hidden top-0  duration-400 transition-all overflow-scroll-hidden ${
+        className={`fixed w-screen h-screen flex text-zinc-200 flex-col justify-center text-2xl gap-y-4 bg-zinc-800 z-10 items-center  md:hidden top-0  duration-400 transition-all overflow-scroll-hidden ${
           toggle ? "left-0" : "left-[-1000px]"
         }`}
       >
@@ -58,21 +64,27 @@ const HamburgerMenu = () => {
           Contact
         </Link>
         {userInfo && !userInfo.isAdmin ? (
-          <Link
-            to='/my-account'
-            className='btn btn-md btn-outline btn-secondary'
-            onClick={toggleHandler}
+          <button
+            className='py-1 px-3 rounded-3xl scale-1 bg-indigo-700 hover:scale-125 hover:bg-indigo-400 transition-all duration-500'
+            onClick={() => handleNavigation("/my-account")}
           >
             My Account
-          </Link>
+          </button>
         ) : (
-          <Link
-            to='/sign-in'
-            className='btn btn-md  btn-outline btn-secondary'
-            onClick={toggleHandler}
-          >
-            Login
-          </Link>
+          <div className='flex flex-col gap-4 mt-5'>
+            <button
+              className='py-1 px-3 rounded-3xl scale-1 bg-indigo-700 hover:scale-125 hover:bg-indigo-400 transition-all duration-500'
+              onClick={() => handleNavigation("/sign-in")}
+            >
+              Login
+            </button>
+            <button
+              className='py-1 px-3 rounded-3xl scale-90 bg-indigo-700 hover:scale-125 hover:bg-indigo-400 transition-all duration-500'
+              onClick={() => handleNavigation("/sign-up")}
+            >
+              Register
+            </button>
+          </div>
         )}
       </div>
     </div>

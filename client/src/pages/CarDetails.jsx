@@ -69,42 +69,43 @@ const CarDetails = () => {
     return <Spinner />;
   }
   return (
-    <>
+    <div className='md:h-[92vh]'>
       {error ? (
         <Alert variant='alert-error' message={error} />
       ) : (
         <>
           <Slider images={car.images} />
-          <div className='w-full flex  flex-col md:flex-row md:justify-around mt-20 items-center'>
-            <div className='md:h-[43.2vh] flex flex-col items-center gap-5'>
-              <p className='text-4xl mb-2 text-black px-14 py-2 shadow-2xl rounded-full bg-slate-100 border-2 border-black'>
-                {car.name}
+          <div className='w-full flex flex-col md:flex-row md:justify-around mt-20 items-center '>
+            <div className=' flex flex-col items-center gap-5'>
+              <p className='text-4xl mb-2 text-white px-14 py-2 shadow-2xl rounded-full bg-zinc-700 border-2 border-zinc-600'>
+                {`${car.brand} 
+                ${car.name}`}
               </p>
-              <div className='flex flex-col md:flex-row md:gap-10 mt-10'>
-                <div className='flex flex-col shadow-xl bg-zinc-700 rounded-3xl w-32 h-32 justify-center items-center'>
-                  <FaCalendar className='text-5xl mb-2 text-yellow-400' />
-                  <p className='text-2xl font-light text-yellow-500'>
+              <div className='flex flex-col gap-4 md:flex-row md:gap-10 mt-10'>
+                <div className='flex flex-col shadow-xl bg-zinc-700 rounded-3xl w-32 h-32 justify-center items-center hover:scale-110'>
+                  <FaCalendar className='text-5xl mb-2 text-indigo-400' />
+                  <p className='text-2xl font-light text-white'>
                     {car.yearModel}
                   </p>
                   <p className='text-lg text-yellow-400'>Model Year</p>
                 </div>
-                <div className='flex flex-col shadow-xl bg-zinc-700 rounded-3xl w-32 h-32 justify-center items-center'>
-                  <GiJoystick className='text-5xl mb-2 text-yellow-400' />
-                  <p className='text-2xl font-light text-yellow-500'>
+                <div className='flex flex-col shadow-xl bg-zinc-700 rounded-3xl w-32 h-32 justify-center items-center hover:scale-110'>
+                  <GiJoystick className='text-5xl mb-2 text-indigo-400' />
+                  <p className='text-2xl font-light text-white'>
                     {car.transmission}
                   </p>
                   <p className='text-lg text-yellow-400'>Transmission</p>
                 </div>
-                <div className='flex flex-col shadow-xl bg-zinc-700 rounded-3xl w-32 h-32 justify-center items-center'>
-                  <FaGasPump className='text-5xl mb-2 text-yellow-400' />
-                  <p className='text-2xl font-light text-yellow-500'>
+                <div className='flex flex-col shadow-xl bg-zinc-700 rounded-3xl w-32 h-32 justify-center items-center hover:scale-110'>
+                  <FaGasPump className='text-5xl mb-2 text-indigo-400' />
+                  <p className='text-2xl font-light text-white'>
                     {car.fuelType}
                   </p>
                   <p className='text-lg text-yellow-400'>Fuel</p>
                 </div>
-                <div className='flex flex-col shadow-xl bg-zinc-700 rounded-3xl w-32 h-32 justify-center items-center'>
-                  <MdAirlineSeatReclineExtra className='text-5xl mb-2 text-yellow-400' />
-                  <p className='text-2xl font-light text-yellow-500'>
+                <div className='flex flex-col shadow-xl bg-zinc-700 rounded-3xl w-32 h-32 justify-center items-center hover:scale-110'>
+                  <MdAirlineSeatReclineExtra className='text-5xl mb-2 text-indigo-400' />
+                  <p className='text-2xl font-light text-white'>
                     {car.seatCapacity}
                   </p>
                   <p className='text-lg text-yellow-400'>Seats</p>
@@ -115,9 +116,11 @@ const CarDetails = () => {
               <p className='text-4xl text-yellow-500 mb-5'>
                 {car.pricePerDay} € / day
               </p>
-              <label htmlFor='fromdate'>From: </label>
+              <label htmlFor='fromdate' className='text-white font-bold'>
+                From:{" "}
+              </label>
               <DatePicker
-                className='bg-neutral rounded-md px-2'
+                className='bg-zinc-600 font-bold text-white rounded-md px-5 py-2'
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 selectsStart
@@ -125,9 +128,11 @@ const CarDetails = () => {
                 minDate={new Date()}
                 endDate={endDate}
               />
-              <label htmlFor='todate'>To: </label>
+              <label htmlFor='todate' className='text-white font-bold'>
+                To:{" "}
+              </label>
               <DatePicker
-                className='bg-neutral rounded-md px-2'
+                className='bg-zinc-600 font-bold text-white rounded-md px-5 py-2'
                 selected={endDate}
                 onChange={(date) => setEndDate(date)}
                 selectsEnd
@@ -159,7 +164,7 @@ const CarDetails = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

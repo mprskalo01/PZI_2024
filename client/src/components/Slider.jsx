@@ -35,7 +35,7 @@ const Slider = ({ images }) => {
         },
       }}
       modules={[Pagination]}
-      className='w-full h-[40vh] rounded-xl'
+      className='w-full rounded-xl md:h-[40vh]'
     >
       {images &&
         images.map((image) => (

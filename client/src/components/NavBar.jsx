@@ -26,7 +26,7 @@ const NavBar = () => {
       >
         FPMOZ
       </button>
-      <div className='hidden space-x-14 text-zinc-200 items-center font-bold md:flex'>
+      <div className='hidden ml-auto space-x-14 text-zinc-200 font-bold md:flex'>
         <button
           className='py-1 px-3 rounded-3xl bg-gray-600 hover:scale-125 hover:bg-gray-400 transition-all duration-500'
           onClick={() => handleNavigation("/")}
