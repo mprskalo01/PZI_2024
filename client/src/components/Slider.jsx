@@ -1,8 +1,10 @@
 import React from "react";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const Slider = ({ images }) => {
   return (
@@ -34,7 +36,7 @@ const Slider = ({ images }) => {
           spaceBetween: 2,
         },
       }}
-      modules={[Pagination]}
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
       className='w-full rounded-xl md:h-[40vh]'
     >
       {images &&
@@ -44,7 +46,7 @@ const Slider = ({ images }) => {
               className='w-full h-full object-cover block rounded-2xl'
               src={`${image}`}
               alt='img'
-            ></img>
+            />
           </SwiperSlide>
         ))}
     </Swiper>

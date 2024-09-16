@@ -16,10 +16,10 @@ const CreateCars = () => {
     name: "",
     brand: "",
     pricePerDay: "",
-    transmission: "automatic", // Default to automatic
+    transmission: "automatic",
     yearModel: "",
-    seatCapacity: "5", // Default to 5
-    fuelType: "petrol", // Default to petrol
+    seatCapacity: "5",
+    fuelType: "petrol",
     images: [],
   });
 
@@ -56,7 +56,7 @@ const CreateCars = () => {
 
   const uploadFileHandler = async (e) => {
     e.preventDefault();
-    const MAX_LENGTH = 4; // Changed to 4 as per your earlier requirement
+    const MAX_LENGTH = 4;
     if (files.length > MAX_LENGTH) {
       alert(`Cannot upload more than ${MAX_LENGTH} files.`);
       return;
@@ -69,16 +69,12 @@ const CreateCars = () => {
 
     try {
       setUploading(true);
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
+      const config = { headers: { "Content-Type": "multipart/form-data" } };
       const { data } = await API.post("api/upload", formdata, config);
 
       setFormData((prev) => ({
         ...prev,
-        images: data.imagePaths, // Update images state with the array of paths
+        images: data.imagePaths,
       }));
       setUploading(false);
     } catch (error) {
@@ -100,19 +96,13 @@ const CreateCars = () => {
   };
 
   const { userInfo } = useSelector((state) => state.userLogin);
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    if (isSubmitting) {
-      console.log("Submission already in progress. Ignoring this request.");
-      return;
-    }
+    if (isSubmitting) return;
 
     setIsSubmitting(true);
-
     try {
       const carData = {
         name,
@@ -124,8 +114,6 @@ const CreateCars = () => {
         fuelType,
         images,
       };
-
-      console.log("Submitting car data:", carData);
 
       const config = {
         headers: {
@@ -139,10 +127,8 @@ const CreateCars = () => {
         JSON.stringify(carData),
         config
       );
-      console.log("Server response:", data);
       dispatch(createCar(data));
 
-      // Clear form after successful submission
       setFormData({
         name: "",
         brand: "",
@@ -155,13 +141,13 @@ const CreateCars = () => {
       });
       setFiles([]);
     } catch (error) {
-      console.error("Error creating car:", error.response || error);
       setError(true);
       setMessage(error.response?.data?.message || "Failed to create car");
     } finally {
       setIsSubmitting(false);
     }
   };
+
   const checkStates = () => {
     return !(
       name.length > 0 &&
@@ -177,114 +163,170 @@ const CreateCars = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className='form-control w-[300px] mx-auto mb-20'
+      className='max-w-4xl mx-auto bg-zinc-700 p-8 shadow-xl rounded-md space-y-6'
     >
-      <label htmlFor='brand'>Brand</label>
-      <input
-        type='text'
-        name='brand'
-        value={brand}
-        onChange={onChange}
-        className='input input-bordered w-full mb-6'
-      />
-      <label htmlFor='name'>Model</label>
-      <input
-        type='text'
-        value={name}
-        name='name'
-        onChange={onChange}
-        className='input input-bordered w-full mb-6'
-      />
+      <h2 className='text-2xl font-semibold text-white mb-6 text-center'>
+        Create a Car
+      </h2>
 
-      <label htmlFor='pricePerDay'>Price per day</label>
-      <input
-        type='number'
-        name='pricePerDay'
-        value={pricePerDay}
-        onChange={onChange}
-        className='input input-bordered w-full mb-6'
-        min={10}
-      />
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+        {/* First Section */}
+        <div className='flex flex-col space-y-4'>
+          <div>
+            <label htmlFor='brand' className='text-white font-bold text-xl'>
+              Brand
+            </label>
+            <input
+              type='text'
+              name='brand'
+              value={brand}
+              onChange={onChange}
+              className='input input-bordered w-full'
+            />
+          </div>
 
-      <label htmlFor='transmission'>Transmission</label>
-      <select
-        name='transmission'
-        value={transmission}
-        onChange={onChange}
-        className='select select-bordered w-full mb-6'
-      >
-        <option value='manual'>Manual</option>
-        <option value='automatic'>Automatic</option>
-      </select>
+          <div>
+            <label htmlFor='name' className='text-white font-bold text-xl'>
+              Model
+            </label>
+            <input
+              type='text'
+              name='name'
+              value={name}
+              onChange={onChange}
+              className='input input-bordered w-full'
+            />
+          </div>
 
-      <label htmlFor='yearModel'>Year Model</label>
-      <input
-        type='number'
-        name='yearModel'
-        value={yearModel}
-        onChange={onChange}
-        className='input input-bordered w-full mb-6'
-        min={2000}
-        max={2025}
-      />
+          <div>
+            <label
+              htmlFor='pricePerDay'
+              className='text-white font-bold text-xl'
+            >
+              Price per day
+            </label>
+            <input
+              type='number'
+              name='pricePerDay'
+              value={pricePerDay}
+              onChange={onChange}
+              className='input input-bordered w-full'
+              min={10}
+            />
+          </div>
 
-      <label htmlFor='seatCapacity'>Seat Capacity</label>
-      <select
-        name='seatCapacity'
-        value={seatCapacity}
-        onChange={onChange}
-        className='select select-bordered w-full mb-6'
-      >
-        {[...Array(7)].map((_, i) => (
-          <option key={i + 1} value={i + 1}>
-            {i + 1}
-          </option>
-        ))}
-      </select>
+          <div>
+            <label
+              htmlFor='transmission'
+              className='text-white font-bold text-xl'
+            >
+              Transmission
+            </label>
+            <select
+              name='transmission'
+              value={transmission}
+              onChange={onChange}
+              className='select select-bordered w-full'
+            >
+              <option value='manual'>Manual</option>
+              <option value='automatic'>Automatic</option>
+            </select>
+          </div>
+        </div>
 
-      <label htmlFor='fuelType'>Fuel</label>
-      <select
-        name='fuelType'
-        value={fuelType}
-        onChange={onChange}
-        className='select select-bordered w-full mb-6'
-      >
-        <option value='petrol'>Petrol</option>
-        <option value='diesel'>Diesel</option>
-      </select>
+        {/* Second Section */}
+        <div className='flex flex-col space-y-4'>
+          <div>
+            <label htmlFor='yearModel' className='text-white font-bold text-xl'>
+              Year Model
+            </label>
+            <input
+              type='number'
+              name='yearModel'
+              value={yearModel}
+              onChange={onChange}
+              className='input input-bordered w-full'
+              min={2000}
+              max={2025}
+            />
+          </div>
 
-      <label htmlFor='images'>Images</label>
-      <input
-        type='file'
-        name='images'
-        accept='image/*'
-        onChange={(e) => setFiles(e.target.files)}
-        multiple
-        className='file-input file-input-bordered file-input-accent w-full max-w-xs'
-        disabled={checkStates()}
-      />
+          <div>
+            <label
+              htmlFor='seatCapacity'
+              className='text-white font-bold text-xl'
+            >
+              Seat Capacity
+            </label>
+            <select
+              name='seatCapacity'
+              value={seatCapacity}
+              onChange={onChange}
+              className='select select-bordered w-full'
+            >
+              {[...Array(7)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+          </div>
 
-      <div className='mt-2 flex-col space-y-2 items-center'>
-        {error && <Alert variant='alert-error' message={message} />}
-        {uploading ? (
-          <FaCheckCircle className='text-success text-3xl' />
-        ) : (
-          <button
-            onClick={uploadFileHandler}
-            className={`flex gap-2 items-center btn-sm rounded-lg ${
-              files.length === 0 || error ? "btn-disabled" : "btn-accent"
-            }`}
-          >
-            Upload images <FaUpload />
-          </button>
-        )}
+          <div>
+            <label htmlFor='fuelType' className='text-white font-bold text-xl'>
+              Fuel
+            </label>
+            <select
+              name='fuelType'
+              value={fuelType}
+              onChange={onChange}
+              className='select select-bordered w-full'
+            >
+              <option value='petrol'>Petrol</option>
+              <option value='diesel'>Diesel</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor='images' className='text-white font-bold text-xl'>
+              Images
+            </label>
+            <input
+              type='file'
+              name='images'
+              accept='image/*'
+              onChange={(e) => setFiles(e.target.files)}
+              multiple
+              className='file-input file-input-bordered file-input-accent w-full'
+              disabled={checkStates()}
+            />
+            <div className='flex justify-between items-center space-x-4'>
+              {uploading ? (
+                <FaCheckCircle className='text-success text-3xl' />
+              ) : (
+                <button
+                  onClick={uploadFileHandler}
+                  className={`flex items-center text-white mt-2 gap-2 btn-sm rounded-lg ${
+                    files.length === 0 || error
+                      ? "opacity-35 btn-disabled"
+                      : "bg-indigo-600"
+                  }`}
+                >
+                  <FaUpload /> Upload images
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
+      {error && <Alert variant='alert-error' message={message} />}
+
       <button
-        className={`btn mt-6 ${
-          isSubmitting || images.length === 0 ? "btn-disabled" : "bg-sky-500"
-        }`}
         type='submit'
+        className={`btn bg-indigo-600 hover:scale-110 w-full mt-6 ${
+          isSubmitting || images.length === 0 ? "btn-disabled" : ""
+        }`}
         disabled={isSubmitting || images.length === 0}
       >
         {isSubmitting ? "Submitting..." : "Send"}

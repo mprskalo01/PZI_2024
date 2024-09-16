@@ -25,9 +25,15 @@ const AdminCarLists = () => {
     }
   }, [dispatch, userInfo, success]);
 
-  const clickHandler = (id) => {
+  const clickHandler = async (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      dispatch(deleteCarById(id));
+      try {
+        await dispatch(deleteCarById(id)).unwrap();
+        // Show success message or update UI
+      } catch (error) {
+        // Show error message
+        console.error("Failed to delete car:", error);
+      }
     }
   };
 

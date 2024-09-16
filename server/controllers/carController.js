@@ -49,7 +49,6 @@ const getAllCars = async (req, res) => {
     });
   }
 };
-
 // Admin
 const deleteCarById = async (req, res) => {
   const { id } = req.params;
@@ -59,9 +58,10 @@ const deleteCarById = async (req, res) => {
       // Handle deletion of images if necessary
       // Example: Delete images from a local directory or MongoDB GridFS
       // const deletedImages = await Image.deleteMany({ _id: { $in: car.images } });
-
-      await car.remove();
-      res.status(200).json("Car deleted");
+      await car.deleteOne(); // Changed from remove() to deleteOne()
+      res.status(200).json({ message: "Car deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Car not found" });
     }
   } catch (error) {
     res.status(500).json({
