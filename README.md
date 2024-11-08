@@ -37,18 +37,14 @@ For the backend, I used Node.js with Express and MongoDB because of their scalab
 
 #### Use case diagram   
 
-
-
-
+![use case](https://github.com/user-attachments/assets/91fdaa5a-ddc5-490e-a089-e8d52fb2499a)
 
 #### Basic Architecture Diagram  
 
-  
-
-
-
+  ![compdiagram](https://github.com/user-attachments/assets/36ea28bc-880e-4ee5-8fba-96512f955104)
 
 #### Database diagram
 
+![Copy of 50_FinanceApp_DataModel](https://github.com/user-attachments/assets/64657b25-158f-427e-850c-491c3f3ffc6a)
 
 
