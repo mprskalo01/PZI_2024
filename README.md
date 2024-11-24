@@ -1,50 +1,122 @@
 # FPMOZ Car Rental
-FPMOZ Car Rental is a full-stack car rental application developed as part of a college project in collaboration with my colleagues. The project was built using React for the frontend, and Node.js, Express, and MongoDB for the backend. It provides a user-friendly interface for managing vehicle rentals and reservations.
 
-The application includes a custom RESTful API that supports role-based authentication, enabling both users and admins to perform secure CRUD operations on vehicles, reservations, and user accounts.
+## Overview
+FPMOZ Car Rental is a comprehensive full-stack vehicle rental management system developed as a collaborative college project. The platform offers an intuitive interface for vehicle rentals and reservations, complete with role-based access control and secure CRUD operations.
 
-Though the project currently does not use TypeScript due to my colleagues' preference, I am planning on converting the entire project to TypeScript to improve code quality, scalability, and maintainability.
+## Key Features
+- Vehicle browsing and detailed view
+- Secure user authentication and authorization
+- Reservation management system
+- Admin dashboard for fleet management
+- User profile and reservation history
+- Custom RESTful API
+- Responsive design for all devices
 
+## Technology Stack
 
-## Frontend technologies | React & Tailwind CSS
-For the frontend, I used Create React App due to its simplicity and ease of setup. React offers an efficient component-based architecture for building interactive UIs, while Tailwind CSS was used for styling, providing a flexible and utility-first approach to design that makes the development process faster and more customizable.
+### Frontend
+- React (Create React App)
+- Tailwind CSS for utility-first styling
+- Component-based architecture
+- Responsive UI/UX design
+- Modern JavaScript practices
 
-## Backend technologies | Node & MongoDB
-For the backend, I used Node.js with Express and MongoDB because of their scalability, ease of use, and seamless integration with JavaScript. Node.js handles asynchronous operations efficiently, Express simplifies server-side logic, and MongoDB offers flexibility with its NoSQL database structure.
+### Backend
+- Node.js with Express
+- MongoDB database
+- RESTful API architecture
+- JWT authentication
+- Role-based access control
 
-### Screenshots of the application  
+## Application Screenshots
 
-***Frontpage***  
+### Landing Page
+The welcoming frontend interface showcasing available services and featured vehicles:
+![Landing Page](https://github.com/user-attachments/assets/8a01c619-2cad-4fdc-a9bb-013f9d788c77)
 
-![frontpage](https://github.com/user-attachments/assets/8a01c619-2cad-4fdc-a9bb-013f9d788c77)
+### Vehicle Fleet
+Browse through our extensive collection of available vehicles:
+![Vehicle Fleet](https://github.com/user-attachments/assets/f4fa4bad-8bb1-498b-b69e-1ab4d5e03317)
 
-***Cars***
+### Vehicle Details
+Detailed vehicle information and booking interface:
+![Vehicle Details](https://github.com/user-attachments/assets/cfe2cc02-13df-46e1-9695-0964f8799e1d)
 
-![cars](https://github.com/user-attachments/assets/f4fa4bad-8bb1-498b-b69e-1ab4d5e03317)
+### Reservation Management
+User-friendly reservation tracking and management:
+![Reservation Overview](https://github.com/user-attachments/assets/f8508d75-8aaf-4892-9a69-26b67e471c71)
 
-***Car Details*** 
+## System Architecture
 
-![caroverview](https://github.com/user-attachments/assets/cfe2cc02-13df-46e1-9695-0964f8799e1d)
+### Use Case Diagram
+Illustrates system functionality and user interactions:
+![Use Case Diagram](https://github.com/user-attachments/assets/91fdaa5a-ddc5-490e-a089-e8d52fb2499a)
 
-***User Reservations Overview***
+### Component Architecture
+Shows the system's technical structure and relationships:
+![Component Diagram](https://github.com/user-attachments/assets/36ea28bc-880e-4ee5-8fba-96512f955104)
 
-![userreservations](https://github.com/user-attachments/assets/f8508d75-8aaf-4892-9a69-26b67e471c71)
+### Database Schema
+Represents data model and relationships:
+![Database Diagram](https://github.com/user-attachments/assets/64657b25-158f-427e-850c-491c3f3ffc6a)
 
+## Installation
 
-***In addition to these interfaces, the app includes user registration and login pages with relevant forms. If an admin logs in, they see an admin dashboard with access to all registered users, cars, reservations, where they can perform various CRUD operations.***
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/fpmoz-car-rental.git
 
-### Diagrams
+# Install frontend dependencies
+cd fpmoz-car-rental/client
+npm install
 
-#### Use case diagram   
+# Install backend dependencies
+cd ../server
+npm install
 
-![use case](https://github.com/user-attachments/assets/91fdaa5a-ddc5-490e-a089-e8d52fb2499a)
+# Start development servers
+# Frontend (in client directory)
+npm start
 
-#### Basic Architecture Diagram  
+# Backend (in server directory)
+npm run dev
+```
 
-  ![compdiagram](https://github.com/user-attachments/assets/36ea28bc-880e-4ee5-8fba-96512f955104)
+## Future Enhancements
+- TypeScript migration for improved type safety and code quality
+- Enhanced booking validation system
+- Advanced search and filtering capabilities
+- Integration with payment gateways
 
-#### Database diagram
+## Environment Variables
+Create a `.env` file in the server directory with the following:
+```
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
 
-![Copy of 50_FinanceApp_DataModel](https://github.com/user-attachments/assets/64657b25-158f-427e-850c-491c3f3ffc6a)
+## API Documentation
+The API endpoints are organized around the following resources:
 
+- `/api/auth` - Authentication routes
+- `/api/vehicles` - Vehicle management
+- `/api/reservations` - Reservation handling
+- `/api/users` - User management (admin only)
 
+Detailed API documentation is available in the `/docs` directory.
+
+## Contributing
+Contributions are welcome! Please follow these steps:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Submit a pull request
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+- FPMOZ faculty mentors and advisors
+- Project collaborators and contributors
