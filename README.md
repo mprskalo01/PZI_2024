@@ -42,10 +42,6 @@ Browse through our extensive collection of available vehicles:
 Detailed vehicle information and booking interface:
 ![Vehicle Details](https://github.com/user-attachments/assets/cfe2cc02-13df-46e1-9695-0964f8799e1d)
 
-### Reservation Management
-User-friendly reservation tracking and management:
-![Reservation Overview](https://github.com/user-attachments/assets/f8508d75-8aaf-4892-9a69-26b67e471c71)
-
 ## System Architecture
 
 ### Use Case Diagram
