@@ -100,8 +100,6 @@ The API endpoints are organized around the following resources:
 - `/api/reservations` - Reservation handling
 - `/api/users` - User management (admin only)
 
-Detailed API documentation is available in the `/docs` directory.
-
 ## Contributing
 Contributions are welcome! Please follow these steps:
 1. Fork the repository
